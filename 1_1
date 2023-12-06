@@ -1,0 +1,38 @@
+
+Ri1 = 1000;
+R1 = 1800;
+R2 = 2000;
+R3 = 2400;
+R4 = 3300;
+R5 = 1300;
+R6 = 1000;
+Ri2 = 100;
+
+Rm = Ri1 + R1;
+Rn = Ri2 + R5;
+
+Vs1 = 24;
+Vs2 = 6;
+
+Gm = 1/Rm;
+G1 = 1/R1;
+G2 = 1/R2;
+G3 = 1/R3;
+G4 = 1/R4;
+Gn = 1/Rn;
+G6 = 1/R6;
+
+A = [(G3 + Gm + G2),    (-G3),         (0);
+     (-G3),          (G3 + Gn + G4),    (-Gn - G4);
+     (0),              (-G4 - Gn),      (G4 + G6 + Gn)];
+
+B = [(Vs1*Gm);
+     (0);
+     (-Vs2*Gn)];
+
+solution = A\B;
+
+Va = solution(1)
+Vb = solution(2)
+Vc = solution(3)
+V0 = 0
